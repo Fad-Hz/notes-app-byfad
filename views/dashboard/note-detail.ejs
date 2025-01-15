@@ -1,0 +1,63 @@
+<style>
+    /* Card Styles */
+.colorful-card {
+    background: linear-gradient(135deg, #2e2e2e, #1f1f1f); /* Dark gray background */
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    color: #e0e0e0; /* Light text color for readability */
+}
+
+.shadow-neon {
+    box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 45px #39ff14; /* Neon light green glow */
+}
+
+/* Neon Text */
+.text-neon-dark-green {
+    color: #228B22; /* Dark green */
+    text-shadow: 0 0 5px #228B22, 0 0 10px #228B22;
+}
+
+.text-neon-light-green {
+    color: #39ff14; /* Neon light green */
+    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+}
+
+/* Neon Button */
+.btn-neon-dark-green {
+    background-color: #228B22; /* Dark green */
+    border: none;
+    color: #e0e0e0; /* Light text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px #228B22, 0 0 10px #228B22;
+}
+
+.btn-neon-dark-green:hover {
+    background-color: #39ff14; /* Light green on hover */
+    color: #121212; /* Dark text for contrast */
+    box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
+}
+
+</style>
+<div class="card colorful-card shadow-neon">
+    <div class="card-body">
+        <h1 class="card-title text-neon-light-green"><%= note.title %></h1>
+        <p class="card-text "><%= note.description %></p>
+        <p class="card-text ">
+            <small class="text-light">
+                Dibuat oleh: <%= note.createdBy ? note.createdBy.fullName : 'Tidak diketahui' %>
+            </small><br>
+            <small class="text-light">
+                Email: <%= note.createdBy ? note.createdBy.email : 'Tidak tersedia' %>
+            </small><br>
+            <small class="text-light">
+                Tanggal: <%= note.createdAt.toLocaleDateString() %>
+            </small>
+        </p>
+        <a href="/dashboard" class="btn btn-neon-dark-green">Kembali ke Dashboard</a>
+    </div>
+</div>

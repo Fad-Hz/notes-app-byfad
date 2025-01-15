@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="login-container">
+        <h1 class="text-center mb-4">Perbarui Catatan</h1>
+        <% if (error) { %>
+            <div class="error-message mb-3">
+                <%= error %>
+            </div>
+        <% } %>
+        <form action="/dashboard/update-note/<%= note ? note._id : '' %>" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Judul</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= note ? note.title : '' %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Deskripsi</label>
+                <textarea class="form-control" id="description" name="description" rows="5" required><%= note ? note.description : '' %></textarea>
+            </div>
+            <button type="submit" class="btn-login">Perbarui</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,406 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delayed {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.animate-hover:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Background Decoration */
+.hero-bg {
+    background: radial-gradient(circle at center, rgba(0, 123, 255, 0.3), transparent),
+                linear-gradient(135deg, #1d1d1d, #121212);
+    filter: blur(50px);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+}
+
+[data-animate="fade-up"] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Bayangan untuk Navbar */
+.navbar.shadow {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Jarak untuk Konten agar tidak terhalang Navbar */
+body {
+    padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+}
+
+/* Efek Hover pada Link Navbar */
+.navbar-nav .nav-link {
+    color: #e0e0e0; /* Warna default */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00bfff; /* Warna saat hover */
+}
+/* Gradien untuk Judul */
+.text-gradient {
+    background: linear-gradient(90deg, #004080, #00bfff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Bayangan pada Teks */
+.text-shadow {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7), 0px 4px 8px rgba(0, 191, 255, 0.5);
+}
+
+/* Efek Hover pada Tombol */
+.animate-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animate-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 191, 255, 0.5);
+}
+
+/* Animasi Fade-Up */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+}
+
+.animate-fade-up-delayed {
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out forwards;
+    animation-delay: 0.3s;
+}
+/* Gradien Teks */
+.text-gradient {
+    background: linear-gradient(45deg, #ff6f61, #ffba08, #00b4d8, #0077b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Bayangan Teks */
+.shadow-text {
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6), 0px 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Gradien Tombol */
+.btn-gradient {
+    background: linear-gradient(90deg, #0077b6, #00b4d8, #48cae4);
+    border: none;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(72, 202, 228, 0.6);
+}
+
+/* Bayangan Tombol */
+.shadow-btn {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), 0px 8px 16px rgba(72, 202, 228, 0.5);
+}
+
+/* Dekorasi Latar Belakang */
+.hero-bg {
+    background: radial-gradient(circle, rgba(0, 119, 182, 0.5) 0%, rgba(0, 180, 216, 0.3) 70%);
+    overflow: hidden;
+}
+
+.hero-bg .circle-gradient {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #ff6f61, #ffba08);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: moveCircle 5s linear infinite alternate;
+}
+
+@keyframes moveCircle {
+    from {
+        transform: translate(-50px, -50px) scale(1);
+    }
+    to {
+        transform: translate(50px, 50px) scale(1.2);
+    }
+}
+
+/* Animasi Muncul */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Bayangan Teks */
+.shadow-text {
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8), 0px 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Dekorasi Latar Belakang */
+.feature-bg {
+    background: radial-gradient(circle, rgba(72, 202, 228, 0.5) 0%, rgba(0, 119, 182, 0.3) 70%);
+    overflow: hidden;
+}
+
+.feature-bg::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #ff6f61, #ffba08);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: moveFeatureCircle 6s linear infinite alternate;
+    top: 20%;
+    left: 10%;
+}
+
+.feature-bg::after {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #48cae4, #0077b6);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: moveFeatureCircle 8s linear infinite alternate;
+    bottom: 15%;
+    right: 15%;
+}
+
+/* Animasi Lingkaran */
+@keyframes moveFeatureCircle {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+
+/* Bayangan Teks */
+.shadow-text {
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8), 0px 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Dekorasi Latar Belakang */
+.about-bg {
+    background: radial-gradient(circle, rgba(72, 202, 228, 0.5) 0%, rgba(0, 119, 182, 0.3) 70%);
+}
+
+.about-bg::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #ff6f61, #ffba08);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: moveAboutCircle 6s linear infinite alternate;
+    top: 20%;
+    left: 15%;
+}
+
+.about-bg::after {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: linear-gradient(135deg, #48cae4, #0077b6);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: moveAboutCircle 8s linear infinite alternate;
+    bottom: 10%;
+    right: 10%;
+}
+
+/* Animasi Lingkaran */
+@keyframes moveAboutCircle {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+/* Animasi Fade-Up */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Animasi Tombol */
+.animate-hover:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.8), 0 6px 15px rgba(72, 202, 228, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #e0ffe0;
+}
+.error-message {
+    color: #ff6666;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.login-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #00bfff;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+}
+
+.form-label {
+    color: #e0f7ff;
+}
+
+.form-control {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    box-shadow: 0 4px 6px rgba(0, 191, 255, 0.1);
+}
+
+.form-control:focus {
+    border-color: #00bfff;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.7);
+}
+
+.btn-login {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 191, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #0099cc;
+    box-shadow: 0 6px 12px rgba(0, 191, 255, 0.8);
+}
+
+
+/* Navbar link hover effect */
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00bfff;
+    transform: scale(1.1);
+}
+
+/* Navbar button hover effect */
+/* Mobile Navbar Adjustments */
+.navbar-toggler-icon {
+    background-color: #00bfff;
+}
+
+.btn-hover {
+    background-color: #00bfff;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    box-shadow: 0 4px 10px rgba(0, 191, 255, 0.6);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-hover:hover {
+    background-color: #0099cc;
+    box-shadow: 0 6px 12px rgba(0, 191, 255, 0.7);
+    transform: scale(1.05);
+}
+
