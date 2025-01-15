@@ -30,17 +30,6 @@
                             <a class="nav-link" href="/about">Tentang</a>
                         </li>
                     </ul>
-                    <div class="d-flex">
-                        <% if (!user) { %>
-                            <a class="btn btn-outline-light me-2 btn-hover" href="/login">Login</a>
-                            <a class="btn btn-primary btn-hover" href="/signup">Sign Up</a>
-                        <% } else { %>
-                            <span class="text-light me-3">Halo, <strong class="text-gradient"> <%= user.fullName %> </strong> </span>
-                            <form action="/logout" method="post">
-                                <button type="submit" class="btn btn-hover">Logout</button>
-                            </form>
-                        <% } %>
-                    </div>
                 </div>
             </div>
         </nav>
