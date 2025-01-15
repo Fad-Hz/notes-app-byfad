@@ -1,8 +1,8 @@
-const { connect } = require('mongoose')
-const db = process.env.MONGO_URI
+const mongo = 'mongodb+srv://user:dbUserPassword@cluster2.bht3f.mongodb.net/'
+const mongoose = require('mongoose')
 const connectDB = async() => {
     try {
-        await connect(db)
+        await mongoose.connect(mongo)
         console.log('database terkoneksi')
     } catch (err) {
         console.log(err.message)
