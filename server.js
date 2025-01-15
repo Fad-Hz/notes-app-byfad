@@ -30,6 +30,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+    // Pastikan user sudah disimpan dalam sesi sebelum diakses
+    res.locals.user = req.session.user || null; // Untuk membuat data user tersedia di view
+    next();
+});
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

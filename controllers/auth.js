@@ -8,11 +8,13 @@ exports.signup = [
     body('fullName').trim().notEmpty().withMessage('Nama lengkap harus diisi.'),
     body('email').isEmail().withMessage('Email tidak valid.').normalizeEmail(),
     body('password').isLength({ min: 6 }).withMessage('Password minimal 6 karakter.'),
-    
+
+    // Proses registrasi user
     async (req, res) => {
         const errors = validationResult(req);
         const { fullName, email, password } = req.body;
 
+        // Cek jika ada error pada validasi
         if (!errors.isEmpty()) {
             return res.render('signup', {
                 title: 'Daftar',
@@ -48,6 +50,7 @@ exports.signup = [
     },
 ];
 
+// Render halaman signup
 exports.renderSignUp = (req, res) => {
     res.render('signup', {
         title: 'Daftar Akun Baru',
@@ -55,6 +58,7 @@ exports.renderSignUp = (req, res) => {
     });
 };
 
+// Logout Controller
 exports.logout = (req, res) => {
     req.session.destroy((err) => {
         if (err) {
@@ -72,10 +76,12 @@ exports.login = [
     body('email').isEmail().withMessage('Email tidak valid.').normalizeEmail(),
     body('password').notEmpty().withMessage('Password harus diisi.'),
 
+    // Proses login user
     async (req, res) => {
         const errors = validationResult(req);
         const { email, password } = req.body;
 
+        // Cek jika ada error pada validasi
         if (!errors.isEmpty()) {
             return res.render('login', {
                 title: 'Halaman Login',
@@ -118,6 +124,7 @@ exports.login = [
     },
 ];
 
+// Render halaman login
 exports.renderLoginPage = (req, res) => {
     res.render('login', {
         title: 'Halaman Login',

@@ -1,6 +1,6 @@
 // Middleware untuk memeriksa apakah pengguna sudah login
 exports.authMiddleware = (req, res, next) => {
-    if (!req.session || !req.session.user) {
+    if (!req.session.user) {
         // Jika belum login, redirect ke halaman signup
         return res.status(401).redirect('/signup');
     }
@@ -10,7 +10,7 @@ exports.authMiddleware = (req, res, next) => {
 
 // Middleware untuk memeriksa apakah pengguna adalah admin
 exports.adminMiddleware = (req, res, next) => {
-    if (!req.session || !req.session.user) {
+    if (!req.session.user) {
         // Jika belum login, redirect ke halaman signup
         return res.status(401).redirect('/signup');
     }
