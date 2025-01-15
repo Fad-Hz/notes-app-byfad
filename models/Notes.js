@@ -11,8 +11,7 @@ const noteSchema = new mongoose.Schema({
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', // Referensi ke model User
-        required: true
+        ref: 'User' // Referensi ke model User
     },
     createdAt: {
         type: Date,

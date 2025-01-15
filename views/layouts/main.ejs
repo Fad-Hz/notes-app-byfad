@@ -38,10 +38,20 @@
                             <a class="nav-link" href="/about">Tentang</a>
                         </li>
                     </ul>
+    
+                    <!-- Menampilkan nama pengguna dan tombol logout jika sudah login -->
+                    <% if (user) { %>
+                        <span class="text-gradient">Selamat datang, <%= user.fullName %>!</span>
+                        <!-- Tombol logout -->
+                        <form action="/logout" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-outline-light ms-3">Logout</button>
+                        </form>
+                    <% } %>
                 </div>
             </div>
         </nav>
     </header>
+    
 
     <!-- Main Content -->
     <main>

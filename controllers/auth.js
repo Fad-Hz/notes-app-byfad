@@ -92,6 +92,8 @@ exports.login = [
         try {
             // Cari user berdasarkan email
             const user = await User.findOne({ email });
+
+            // Jika user tidak ditemukan
             if (!user) {
                 return res.render('login', {
                     title: 'Halaman Login',
@@ -110,12 +112,17 @@ exports.login = [
 
             // Simpan data user ke sesi
             req.session.userId = user._id;
-            req.session.user = { id: user._id, fullName: user.fullName };
+            req.session.user = { 
+                id: user._id, 
+                fullName: user.fullName,
+                email: user.email,  // Menyimpan email di sesi
+                role: user.role // Menyimpan role di sesi (misalnya: user, admin)
+            };
 
             // Arahkan ke dashboard
             res.redirect('/dashboard');
         } catch (error) {
-            console.error(error);
+            console.error('Login error:', error); // Log error untuk debugging
             res.render('login', {
                 title: 'Halaman Login',
                 error: 'Terjadi kesalahan. Silakan coba lagi.',
@@ -123,6 +130,7 @@ exports.login = [
         }
     },
 ];
+
 
 // Render halaman login
 exports.renderLoginPage = (req, res) => {

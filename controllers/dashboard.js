@@ -16,6 +16,7 @@ exports.dashboard = async (req, res) => {
     }
 }
 
+// Controller untuk menampilkan detail catatan
 exports.viewNote = async (req, res) => {
     const { id } = req.params
     try {
@@ -37,7 +38,6 @@ exports.viewNote = async (req, res) => {
     }
 }
 
-
 // Controller untuk membuat catatan baru
 exports.createNote = async (req, res) => {
     try {
@@ -55,7 +55,7 @@ exports.createNote = async (req, res) => {
         const newNote = new Note({
             title,
             description,
-            createdBy: req.session.user._id // Menggunakan ID user dari sesi
+            createdBy: req.session.userId // Menggunakan ID user dari sesi
         })
 
         await newNote.save()
@@ -76,6 +76,7 @@ exports.getform = (req, res) => {
     res.render('dashboard/create-note', { title: 'Buat Catatan', error: null })
 }
 
+// Controller untuk memperbarui catatan
 exports.renderUpdateForm = async (req, res) => {
     const { id } = req.params // ID dari note yang akan diperbarui
 
@@ -86,8 +87,8 @@ exports.renderUpdateForm = async (req, res) => {
         if (!note) {
             return res.status(404).render('dashboard/update-note', { 
                 note: null, 
-                error: 'Note not found', 
-                title: 'Update Note' 
+                error: 'Catatan tidak ditemukan', 
+                title: 'Update Catatan' 
             })
         }
 
@@ -95,18 +96,19 @@ exports.renderUpdateForm = async (req, res) => {
         res.render('dashboard/update-note', { 
             note, 
             error: null, 
-            title: 'Update Note' 
+            title: 'Update Catatan' 
         })
     } catch (error) {
         console.error(error)
         res.status(500).render('dashboard/update-note', { 
             note: null, 
-            error: 'An error occurred while loading the update form', 
-            title: 'Update Note' 
+            error: 'Terjadi kesalahan saat memuat form pembaruan', 
+            title: 'Update Catatan' 
         })
     }
 }
 
+// Controller untuk memperbarui catatan
 exports.updateNote = async (req, res) => {
     const { id } = req.params // ID dari note
     const { title, description } = req.body // Data baru untuk note
@@ -117,12 +119,12 @@ exports.updateNote = async (req, res) => {
             const note = await Note.findById(id)
             return res.status(400).render('dashboard/update-note', { 
                 note, 
-                error: 'Both title and description are required', 
-                title: 'Update Note' 
+                error: 'Judul dan deskripsi harus diisi', 
+                title: 'Update Catatan' 
             })
         }
 
-        // Cari dan perbarui note berdasarkan ID
+        // Cari dan perbarui catatan berdasarkan ID
         const updatedNote = await Note.findByIdAndUpdate(
             id,
             { title, description },
@@ -132,8 +134,8 @@ exports.updateNote = async (req, res) => {
         if (!updatedNote) {
             return res.status(404).render('dashboard/update-note', { 
                 note: null, 
-                error: 'Note not found', 
-                title: 'Update Note' 
+                error: 'Catatan tidak ditemukan', 
+                title: 'Update Catatan' 
             })
         }
 
@@ -144,25 +146,30 @@ exports.updateNote = async (req, res) => {
         const note = await Note.findById(id)
         res.status(500).render('dashboard/update-note', { 
             note, 
-            error: 'An error occurred while updating the note', 
-            title: 'Update Note' 
+            error: 'Terjadi kesalahan saat memperbarui catatan', 
+            title: 'Update Catatan' 
         })
     }
 }
 
-
-// Delete note
+// Controller untuk menghapus catatan
 exports.deleteNote = async (req, res) => {
-    const notes = await Note.find().populate('createdBy', 'fullName email')
     const { id } = req.params // ID dari note
 
     try {
-        // Cari dan hapus note berdasarkan ID
+        // Cari dan hapus catatan berdasarkan ID
         const deletedNote = await Note.findByIdAndDelete(id)
 
-        res.render('dashboard/index', { title: 'Update Note', notes })
+        if (!deletedNote) {
+            return res.status(404).render('404', {
+                title: 'Catatan Tidak Ditemukan'
+            })
+        }
+
+        // Redirect ke dashboard setelah berhasil dihapus
+        res.redirect('/dashboard')
     } catch (error) {
         console.error(error)
-        res.status(500).json({ message: 'An error occurred while deleting the note', error: error.message })
+        res.status(500).json({ message: 'Terjadi kesalahan saat menghapus catatan', error: error.message })
     }
 }
