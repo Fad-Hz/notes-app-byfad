@@ -12,15 +12,24 @@ app.set('views', './views')
 app.set('layout', './layouts/main') 
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'default_secret', // Simpan `SESSION_SECRET` di .env
     resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false } 
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'production' }, // Amankan cookie di production
 }))
+
 app.use((req, res, next) => {
-    res.locals.user = req.session.userId ? req.session.user : null
-    next()
-})
+    if (req.session && req.session.userId && req.session.user) {
+        // Jika user sudah login, simpan data user di res.locals
+        res.locals.user = req.session.user;
+    } else {
+        // Jika belum login, set res.locals.user ke null
+        res.locals.user = null;
+    }
+    // Lanjutkan ke middleware berikutnya
+    next();
+});
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
